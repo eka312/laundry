@@ -9,12 +9,11 @@ class Karyawan extends Model
 {
     use HasFactory;
 
-    protected $table = 'karyawans';
     protected $primaryKey = 'id_karyawan';
-    protected $guarded = [];
+    public $incrementing = true;
 
-    public function transaksis()
-    {
-        return $this->hasMany(Transaksi::class, 'id_karyawan');
-    }
+    protected $fillable = [
+        'nama_karyawan',
+        'no_telp_karyawan',
+    ];
 }
