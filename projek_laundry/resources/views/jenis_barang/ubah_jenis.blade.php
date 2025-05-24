@@ -18,7 +18,7 @@
             Ubah Data Jenis Barang
         </div>
         <div class="card-body text-capitalize">
-            <form action="{{ route('name_edit_jenis_barang', $jenis->id_jenis) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('name_edit_jenis', $jenis->id_jenis) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-4 row">
                     <label for="nama_barang" class="col-sm-2 col-form-label">Nama Jenis Barang</label>
