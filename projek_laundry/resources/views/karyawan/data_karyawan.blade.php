@@ -13,7 +13,7 @@
         </ol>
     </nav>   
     
-    <div class="card mb-4 text-capitalize" style="border-color: #0D1B2A;"> {{-- biru dongker border --}}
+    <div class="card mb-4 text-capitalize" style="border-color:rgb(36, 60, 87);"> {{-- biru dongker border --}}
         <div class="card-header" style="background-color: #0D1B2A; color: white;"> {{-- header biru dongker --}}
             <div class="d-flex">
                 <div class="flex-grow-1 d-flex align-items-center">

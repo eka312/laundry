@@ -85,18 +85,18 @@ Route::middleware(['auth'])->group(function () {
 
     Route::controller(JenisBarangController::class)->group(function () {
         // Routing halaman data jenis_barang
-        Route::get('/jenis_barang', 'index');
+        Route::get('/data_jenis', 'index');
     
         // Routing tambah jenis_barang
-        Route::get('/tambah_jenis_barang', 'create');
-        Route::post('/tambah_jenis_barang', 'store');
+        Route::get('/tambah_jenis', 'create');
+        Route::post('/tambah_jenis', 'store');
     
         // Routing ubah jenis_barang
-        Route::get('/ubah_jenis_barang/{id}', 'edit');
-        Route::post('/ubah_jenis_barang/{id}', 'update')->name('name_edit_jenis_barang');
+        Route::get('/ubah_jenis/{id}', 'edit');
+        Route::post('/ubah_jenis/{id}', 'update')->name('name_edit_jenis');
     
         // Routing hapus jenis_barang
-        Route::get('/hapus_jenis_barang/{id}', 'destroy');
+        Route::get('/hapus_jenis/{id}', 'destroy');
     });
 
     

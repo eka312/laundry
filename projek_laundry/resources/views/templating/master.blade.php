@@ -41,9 +41,17 @@
                                 <div class="sb-nav-link-icon"><i class="fa-regular fa-rectangle-list fa-lg"></i></i></div>
                                 Data Karyawan
                             </a>
-                            <a class="nav-link" href="/jenis_barang">
+                            <a class="nav-link" href="/data_jenis">
                                 <div class="sb-nav-link-icon"><i class="fa-regular fa-rectangle-list fa-lg"></i></i></div>
                                 Jenis Barang
+                            </a>
+                            <a class="nav-link" href="/data_pelanggan">
+                                <div class="sb-nav-link-icon"><i class="fa-regular fa-rectangle-list fa-lg"></i></i></div>
+                                Data Pelanggan
+                            </a>
+                            <a class="nav-link" href="/data_transaksi">
+                                <div class="sb-nav-link-icon"><i class="fa-regular fa-rectangle-list fa-lg"></i></i></div>
+                                Data Transaksi
                             </a>
                             <a class="nav-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                 <div class="sb-nav-link-icon"><i class="bi bi-box-arrow-right fs-5"></i></div>
