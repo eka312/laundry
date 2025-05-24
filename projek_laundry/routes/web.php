@@ -14,5 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('landing_page/beranda');
+});
+
+Route::get('/layanan', function () {
+    return view('landing_page/layanan');
+});
+
+Route::get('/tentang_kami', function () {
+    return view('landing_page/tentang_kami');
+});
+
+Route::get('/kontak', function () {
+    return view('landing_page/kontak');
 });
