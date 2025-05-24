@@ -21,20 +21,13 @@ use App\Http\Controllers\TransaksiController;
 |
 */
 
-Route::get('/', function () {
-    return view('landing_page/beranda');
-});
 
-Route::get('/layanan', function () {
-    return view('landing_page/layanan');
-});
 
-Route::get('/tentang_kami', function () {
-    return view('landing_page/tentang_kami');
-});
-
-Route::get('/kontak', function () {
-    return view('landing_page/kontak');
+Route::prefix('/')->group(function () {
+    Route::view('/', 'landing_page.beranda');
+    Route::view('layanan', 'landing_page.layanan');
+    Route::view('tentang_kami', 'landing_page.tentang_kami');
+    Route::view('kontak', 'landing_page.kontak');
 });
 
 Route::controller(TemplateController::class)->group(function () {
@@ -51,7 +44,7 @@ Route::middleware(['auth'])->group(function () {
    
 });
 
- Route::controller(KaryawanController::class)->group(function () {
+    Route::controller(KaryawanController::class)->group(function () {
         // Routing halaman data karyawan
         Route::get('/data_karyawan', 'index');
     
@@ -84,19 +77,19 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::controller(JenisBarangController::class)->group(function () {
-        // Routing halaman data jenis_barang
-        Route::get('/data_jenis_barang', 'index');
+        // Routing halaman data jenis
+        Route::get('/data_jenis', 'index');
     
-        // Routing tambah jenis_barang
-        Route::get('/tambah_jenis_barang', 'create');
-        Route::post('/tambah_jenis_barang', 'store');
+        // Routing tambah jenis
+        Route::get('/tambah_jenis', 'create');
+        Route::post('/tambah_jenis', 'store');
     
-        // Routing ubah jenis_barang
-        Route::get('/ubah_jenis_barang/{id}', 'edit');
-        Route::post('/ubah_jenis_barang/{id}', 'update')->name('name_edit_jenis_barang');
+        // Routing ubah jenis
+        Route::get('/ubah_jenis/{id}', 'edit');
+        Route::post('/ubah_jenis/{id}', 'update')->name('name_edit_jenis');
     
-        // Routing hapus jenis_barang
-        Route::get('/hapus_jenis_barang/{id}', 'destroy');
+        // Routing hapus jenis
+        Route::get('/hapus_jenis/{id}', 'destroy');
     });
 
     

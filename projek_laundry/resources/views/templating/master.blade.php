@@ -7,7 +7,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>@yield('judul_halaman')</title>
-        <link href="iPortfolio-1.0.0/assets/img/portfolio.png" rel="icon">
+        <link href="Freshen-1.0.0/assets/logo/logo.png" rel="icon">
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="{{asset('template-admin/dist/css/styles.css')}}" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" integrity="sha512-dPXYcDub/aeb08c63jRq/k6GaKccl256JQy/AnOq7CAnEZ9FzSL9wSbcZkMp4R26vBsMLFYH4kQ67/bbV8XaCQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -18,7 +18,7 @@
             <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="text-center">
-                        <img src="{{asset('sandhikagalih.github.io-main/img/foto2.png')}}" class="rounded-circle w-50 border border-4 border-white" alt="profil">
+                        <img src="{{asset('Freshen-1.0.0/assets/logo/logo.png')}}" class="rounded-circle w-50 border border-4 border-white" alt="profil">
                     </div>
                     <div class="text-center pt-3">
                         <!-- Youtube -->
@@ -35,19 +35,27 @@
                         </a>
                     </div>
                     <hr class="border border-white">
-                    <div class="sb-sidenav-menu">
+                    <div class="sb-sidenav-menu text-capitalize">
                         <div class="nav">
-                            <a class="nav-link" href="/data_projek">
+                            <a class="nav-link" href="/data_karyawan">
                                 <div class="sb-nav-link-icon"><i class="fa-regular fa-rectangle-list fa-lg"></i></i></div>
-                                Projek
+                                karyawan
+                            </a>
+                            <a class="nav-link" href="/data_jenis">
+                                <div class="sb-nav-link-icon"><i class="fa-regular fa-rectangle-list fa-lg"></i></i></div>
+                                jenis barang
+                            </a>
+                            <a class="nav-link" href="/data_pelanggan">
+                                <div class="sb-nav-link-icon"><i class="fa-regular fa-rectangle-list fa-lg"></i></i></div>
+                                pelanggan
+                            </a>
+                            <a class="nav-link" href="/data_transaksi">
+                                <div class="sb-nav-link-icon"><i class="fa-regular fa-rectangle-list fa-lg"></i></i></div>
+                                transaksi
                             </a>
                             <a class="nav-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                 <div class="sb-nav-link-icon"><i class="bi bi-box-arrow-right fs-5"></i></div>
                                 Keluar
-                            </a>
-                            <a class="nav-link " href="/" >
-                                <div class="sb-nav-link-icon"><i class="bi bi-box-arrow-left fs-5"></i></div>
-                                Kembali
                             </a>
                         </div>
                     </div>
@@ -61,7 +69,7 @@
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; My Portfolio 2025</div>
+                            <div class="text-muted">Copyright &copy; Selsil Laundry 2025</div>
                             <div>
                                 <a href="#">Privacy Policy</a>
                                 &middot;

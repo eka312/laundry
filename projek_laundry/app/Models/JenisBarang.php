@@ -11,7 +11,7 @@ class JenisBarang extends Model
 
     protected $table = 'jenis_barangs';
     protected $primaryKey = 'id_jenis';
-    protected $guarded = [];
+    protected $fillable = ['nama_barang','tarif'];
 
     public function transaksis()
     {
