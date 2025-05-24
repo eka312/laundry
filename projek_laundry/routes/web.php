@@ -85,7 +85,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::controller(JenisBarangController::class)->group(function () {
         // Routing halaman data jenis_barang
-        Route::get('/data_jenis_barang', 'index');
+        Route::get('/jenis_barang', 'index');
     
         // Routing tambah jenis_barang
         Route::get('/tambah_jenis_barang', 'create');
