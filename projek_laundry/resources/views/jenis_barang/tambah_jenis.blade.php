@@ -3,7 +3,7 @@
 @section('judul_halaman', ' Tambah Data Jenis Barang |  SelSil Laundry')
 
 @section('konten')
-<div class="container text-capitalize" style="background-color: #fef7f1; padding: 2rem; border-radius: 10px;">
+<div class="container text-capitalize" style="background-color: #ffffff; padding: 2rem; border-radius: 10px;">
     <h1 class="mt-4 text-dark">tambah data jenis barang</h1>
     <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
         <ol class="breadcrumb">
@@ -12,7 +12,7 @@
         </ol>
     </nav>
 
-    <div class="card mb-4" style="background-color: #e1e9f1;">
+    <div class="card mb-4" style="background-color:rgb(234, 238, 243);">
         <div class="card-header text-light" style="background-color: #002f5f;">
             <i class="fas fa-plus me-1"></i>
             Tambah Data Jenis Barang

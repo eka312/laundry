@@ -7,7 +7,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\JenisBarangController;
-use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\TransaksiController; 
 
 
 /*
@@ -99,7 +99,8 @@ Route::middleware(['auth'])->group(function () {
     
         // Routing tambah transaksi
         Route::get('/tambah_transaksi', 'create');
-        Route::post('/tambah_transaksi', 'store');
+        Route::post('/tambah_transaksi', 'store')->name('transaksi.store');
+
     
         // Routing ubah transaksi
         Route::get('/ubah_transaksi/{id}', 'edit');
