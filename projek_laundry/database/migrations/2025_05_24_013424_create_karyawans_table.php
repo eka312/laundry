@@ -9,17 +9,15 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-   public function up()
-{
-    Schema::create('karyawans', function (Blueprint $table) {
-        $table->increments('id_karyawan');
-        $table->string('nama_karyawan');
-        $table->string('no_telp_karyawan');
-        $table->timestamps();
-    });
-
-}
-
+    public function up()
+    {
+        Schema::create('karyawans', function (Blueprint $table) {
+            $table->increments('id_karyawan'); // ID Karyawan
+            $table->string('nama_karyawan');
+            $table->string('no_telp_karyawan');
+            $table->timestamps();
+        });
+    }
 
     /**
      * Reverse the migrations.

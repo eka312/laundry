@@ -21,20 +21,13 @@ use App\Http\Controllers\TransaksiController;
 |
 */
 
-Route::get('/', function () {
-    return view('landing_page/beranda');
-});
 
-Route::get('/layanan', function () {
-    return view('landing_page/layanan');
-});
 
-Route::get('/tentang_kami', function () {
-    return view('landing_page/tentang_kami');
-});
-
-Route::get('/kontak', function () {
-    return view('landing_page/kontak');
+Route::prefix('/')->group(function () {
+    Route::view('/', 'landing_page.beranda');
+    Route::view('layanan', 'landing_page.layanan');
+    Route::view('tentang_kami', 'landing_page.tentang_kami');
+    Route::view('kontak', 'landing_page.kontak');
 });
 
 Route::controller(TemplateController::class)->group(function () {
@@ -51,7 +44,7 @@ Route::middleware(['auth'])->group(function () {
    
 });
 
- Route::controller(KaryawanController::class)->group(function () {
+    Route::controller(KaryawanController::class)->group(function () {
         // Routing halaman data karyawan
         Route::get('/data_karyawan', 'index');
     

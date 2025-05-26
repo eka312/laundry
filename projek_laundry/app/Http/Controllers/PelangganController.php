@@ -12,7 +12,8 @@ class PelangganController extends Controller
      */
     public function index()
     {
-        //
+        $pelanggan = Pelanggan::all(); 
+         return view('pelanggan.data_pelanggan', compact('pelanggan'));
     }
 
     /**
@@ -20,7 +21,7 @@ class PelangganController extends Controller
      */
     public function create()
     {
-        //
+        return view('pelanggan.tambah_pelanggan');
     }
 
     /**
@@ -28,7 +29,24 @@ class PelangganController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama_pelanggan' => 'required|string|max:255',
+            'no_telp' => 'required|string|max:255',
+            'alamat' => 'required',
+            
+        ]);
+        
+
+
+        // Simpan data ke database
+        $pelanggan = Pelanggan::create([
+            'nama_pelanggan' => $request->nama_pelanggan,
+            'no_telp' => $request->no_telp,
+            'alamat' => $request->alamat,
+            
+        ]);
+
+        return redirect('/data_pelanggan');
     }
 
     /**
@@ -44,7 +62,9 @@ class PelangganController extends Controller
      */
     public function edit(string $id)
     {
-        //
+         // untuk mengambil data projek berdasarkan kolom id_projek
+         $pelanggan = pelanggan::findOrFail($id);
+         return view('pelanggan.ubah_pelanggan', compact('pelanggan'));
     }
 
     /**
@@ -52,7 +72,23 @@ class PelangganController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $pelanggan = Pelanggan::findOrFail($id);
+
+        $request->validate([
+            'nama_pelanggan' => 'required|string|max:255',
+            'no_telp' => 'required|string|max:255',
+            'alamat' => 'required',
+        ]);
+
+    
+        // Update data lain
+        $pelanggan->nama_pelanggan = $request->nama_pelanggan;
+        $pelanggan->no_telp = $request->no_telp;
+        $pelanggan->alamat = $request->alamat;
+        $pelanggan->save();
+    
+        return redirect('/data_pelanggan');
+    
     }
 
     /**
@@ -60,6 +96,9 @@ class PelangganController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $delete = Pelanggan::where('id_pelanggan', $id)->delete();
+        
+        //setelah terhapus akan dialihkan ke hal data pelanggan
+        return redirect('/data_pelanggan');
     }
 }

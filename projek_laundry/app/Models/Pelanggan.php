@@ -11,7 +11,12 @@ class Pelanggan extends Model
 
     protected $table = 'pelanggans';
     protected $primaryKey = 'id_pelanggan';
-    protected $guarded = [] ;
+    protected $fillable = [
+        'nama_pelanggan',
+        'no_telp',
+        'alamat',
+        
+    ] ;
 
     public function transaksis()
     {

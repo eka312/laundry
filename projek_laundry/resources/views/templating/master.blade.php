@@ -35,7 +35,7 @@
                         </a>
                     </div>
                     <hr class="border border-white">
-                    <div class="sb-sidenav-menu">
+                    <div class="sb-sidenav-menu text-capitalize">
                         <div class="nav">
                             <a class="nav-link" href="/data_karyawan">
                                 <div class="sb-nav-link-icon"><i class="fa-regular fa-rectangle-list fa-lg"></i></i></div>
