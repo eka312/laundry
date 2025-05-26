@@ -1,6 +1,6 @@
 @extends('templating.template_login')
 
-@section('judul_halaman', 'Login | My Portfolio')
+@section('judul_halaman', 'Login | SelSil Laundry')
 
 @section('konten')
     <div class="card shadow-lg border-0 rounded-lg mt-5">

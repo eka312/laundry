@@ -11,21 +11,28 @@ return new class extends Migration
      */
     public function up(): void
     {
-         Schema::create('transaksis', function (Blueprint $table) {
-            $table->increments('id_transaksi'); // ID Transaksi
+        Schema::create('transaksis', function (Blueprint $table) {
+            $table->increments('id_transaksi');
             $table->date('tanggal');
+
             $table->unsignedInteger('id_karyawan');
             $table->foreign('id_karyawan')->references('id_karyawan')->on('karyawans')->onDelete('cascade');
+
             $table->float('berat_barang');
+
             $table->unsignedInteger('id_pelanggan');
-            $table->foreign('id_pelanggan')->references('id_karyawan')->on('karyawans')->onDelete('cascade');
+            $table->foreign('id_pelanggan')->references('id_pelanggan')->on('pelanggans')->onDelete('cascade');
+
             $table->unsignedInteger('id_jenis');
-            $table->foreign('id_jenis')->references('id_karyawan')->on('karyawans')->onDelete('cascade');
+            $table->foreign('id_jenis')->references('id_jenis')->on('jenis_barangs')->onDelete('cascade');
+
             $table->integer('tarif');
             $table->integer('total');
             $table->timestamps();
         });
+
     }
+
 
     /**
      * Reverse the migrations.

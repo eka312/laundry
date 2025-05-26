@@ -39,19 +39,19 @@
                         <div class="nav">
                             <a class="nav-link" href="/data_karyawan">
                                 <div class="sb-nav-link-icon"><i class="fa-regular fa-rectangle-list fa-lg"></i></i></div>
-                                karyawan
+                                Data Karyawan
                             </a>
                             <a class="nav-link" href="/data_jenis">
                                 <div class="sb-nav-link-icon"><i class="fa-regular fa-rectangle-list fa-lg"></i></i></div>
-                                jenis barang
+                                Jenis Barang
                             </a>
                             <a class="nav-link" href="/data_pelanggan">
                                 <div class="sb-nav-link-icon"><i class="fa-regular fa-rectangle-list fa-lg"></i></i></div>
-                                pelanggan
+                                Data Pelanggan
                             </a>
                             <a class="nav-link" href="/data_transaksi">
                                 <div class="sb-nav-link-icon"><i class="fa-regular fa-rectangle-list fa-lg"></i></i></div>
-                                transaksi
+                                Data Transaksi
                             </a>
                             <a class="nav-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                 <div class="sb-nav-link-icon"><i class="bi bi-box-arrow-right fs-5"></i></div>
@@ -69,7 +69,7 @@
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Selsil Laundry 2025</div>
+                            <div class="text-muted">Copyright &copy; SelSil Laundry 2025</div>
                             <div>
                                 <a href="#">Privacy Policy</a>
                                 &middot;
