@@ -13,9 +13,11 @@ class KaryawanController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
+    {   
+    
         $karyawan = Karyawan::all(); 
          return view('karyawan.data_karyawan', compact('karyawan'));
+        
     }
 
     /**
