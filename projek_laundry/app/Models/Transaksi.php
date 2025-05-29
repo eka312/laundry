@@ -9,22 +9,19 @@ class Transaksi extends Model
 {
     use HasFactory;
 
-     protected $table = 'transaksis';
-    protected $primaryKey = 'id';
-    protected $guarded = [];
+    protected $primaryKey = 'id_transaksi';
+    protected $fillable = ['id_karyawan', 'id_pelanggan', 'id_jenis', 'tarif'];
 
-    public function pelanggan()
-    {
-        return $this->belongsTo(Pelanggan::class, 'id_pelanggan');
-    }
-
-    public function karyawan()
-    {
+    public function karyawan() {
         return $this->belongsTo(Karyawan::class, 'id_karyawan');
     }
 
-    public function jenisBarang()
-    {
+    public function pelanggan() {
+        return $this->belongsTo(Pelanggan::class, 'id_pelanggan');
+    }
+
+    public function jenis() {
         return $this->belongsTo(JenisBarang::class, 'id_jenis');
     }
 }
+

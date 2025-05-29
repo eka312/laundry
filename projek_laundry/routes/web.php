@@ -2,6 +2,7 @@
 
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\PelangganController;
@@ -33,7 +34,7 @@ Route::prefix('/')->group(function () {
 });
 
 
-Route::middleware(['web'])->group(function () {
+
 
     Route::controller(AuthController::class)->group(function () {
         // Routing halaman register
@@ -44,6 +45,16 @@ Route::middleware(['web'])->group(function () {
     // Route login, logout
     Route::get('/login', [LoginController::class, 'index'])->name('login');
     Route::post('/login', [LoginController::class, 'authenticate'])->name('login.submit');
+
+    
+    // Routing halaman logout
+    Route::post('/logout', function () {
+        Auth::logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+        return redirect('/');
+    })->name('logout');
+
 
     Route::middleware(['auth'])->group(function () {
     
@@ -66,34 +77,43 @@ Route::middleware(['web'])->group(function () {
         });
 
         Route::controller(JenisBarangController::class)->group(function () {
+            // Routing halaman data jenis_barang
             Route::get('/data_jenis', 'index');
+        
+            // Routing tambah jenis_barang
             Route::get('/tambah_jenis', 'create');
             Route::post('/tambah_jenis', 'store');
+        
+            // Routing ubah jenis_barang
             Route::get('/ubah_jenis/{id}', 'edit');
             Route::post('/ubah_jenis/{id}', 'update')->name('name_edit_jenis');
+        
+            // Routing hapus jenis_barang
             Route::get('/hapus_jenis/{id}', 'destroy');
         });
 
-        Route::post('/logout', function () {
-            Auth::logout();
-            request()->session()->invalidate();
-            request()->session()->regenerateToken();
-            return redirect('/');
-        })->name('logout');
+    
+        Route::controller(TransaksiController::class)->group(function () {
+            // Routing halaman data transaksi
+            Route::get('/data_transaksi', 'index');
+        
+            // Routing tambah transaksi
+            Route::get('/tambah_transaksi', 'create');
+            Route::post('/tambah_transaksi', 'store');
+        
+            // Routing ubah transaksi
+            Route::get('/ubah_transaksi/{id}', 'edit');
+            Route::post('/ubah_transaksi/{id}', 'update')->name('name_edit_transaksi');
+        
+            // Routing hapus transaksi
+            Route::get('/hapus_transaksi/{id}', 'destroy');
+        });
 
     });
 
-    
-});
 
-  
 
-    Route::post('/logout', function () {
-        Auth::logout();
-        request()->session()->invalidate();
-        request()->session()->regenerateToken();
-        return redirect('/');
-    })->name('logout');
+
 
 
 

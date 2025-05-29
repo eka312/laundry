@@ -22,11 +22,11 @@
                     </div>
                     <div class="text-center pt-3">
                         <!-- Youtube -->
-                        <a href="https://www.youtube.com/@itz_fue" target="_blank" class=" btn btn-outline-light btn-sm rounded-circle p-1 me-1">
+                        <a href="https://www.youtube.com/arretechnology" target="_blank" class=" btn btn-outline-light btn-sm rounded-circle p-1 me-1">
                             <i class="fa-brands fa-youtube fa-lg"></i>
                         </a>
                         <!-- Instagram -->
-                        <a href="https://www.instagram.com/silviaeka312/" target="_blank" class="btn btn-outline-light btn-sm rounded-circle  me-1">
+                        <a href="https://www.instagram.com/arretechnology/" target="_blank" class="btn btn-outline-light btn-sm rounded-circle  me-1">
                             <i class="fa-brands fa-instagram fa-lg"></i>
                         </a>
                         <!-- WhatsApp-->
@@ -93,10 +93,11 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                        <form action="{{ route('logout') }}" method="POST">
+                        <form method="POST" action="{{ route('logout') }}">
                             @csrf
-                            <input type="submit" class="btn btn-danger" value="Logout">
+                            <button type="submit" class="btn btn-danger">Logout</button>
                         </form>
+
                     </div>
                 </div>
             </div>
