@@ -18,62 +18,74 @@
             Ubah Data Transaksi
         </div>
         <div class="card-body text-capitalize">
-            <form action="{{ route('name_edit_transaksi', $transaksi->id_transaksi) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('name_edit_transaksi', $transaksi->id_transaksi) }}" method="POST">
                 @csrf
-                {{-- ID Karyawan --}}
+
+                <div class="mb-4 row">
+                    <label for="tanggal" class="col-sm-2 col-form-label">Tanggal</label>
+                    <div class="col-sm-10">
+                        <input type="date" name="tanggal" id="tanggal" class="form-control" value="{{ \Carbon\Carbon::parse($transaksi->tanggal)->format('Y-m-d') }}" required>
+                    </div>
+                </div>
+
                 <div class="mb-4 row">
                     <label for="id_karyawan" class="col-sm-2 col-form-label">Nama Karyawan</label>
                     <div class="col-sm-10">
                         <select name="id_karyawan" id="id_karyawan" class="form-select" required>
-                            <option disabled>-- Pilih Karyawan --</option>
-                            @foreach($karyawan as $data_karyawan)
-                                <option value="{{ $data_karyawan->id_karyawan }}" {{ $data_karyawan->id_karyawan == $transaksi->id_karyawan ? 'selected' : '' }}>
-                                    {{ $data_karyawan->nama_karyawan }}
+                            <option value="" disabled>-- Pilih Karyawan --</option>
+                            @foreach ($karyawan as $k)
+                                <option value="{{ $k->id_karyawan }}" {{ $k->id_karyawan == $transaksi->id_karyawan ? 'selected' : '' }}>
+                                    {{ $k->nama_karyawan }}
                                 </option>
                             @endforeach
                         </select>
                     </div>
                 </div>
 
-                {{-- ID Pelanggan --}}
                 <div class="mb-4 row">
                     <label for="id_pelanggan" class="col-sm-2 col-form-label">Nama Pelanggan</label>
                     <div class="col-sm-10">
                         <select name="id_pelanggan" id="id_pelanggan" class="form-select" required>
-                            <option disabled>-- Pilih Pelanggan --</option>
-                            @foreach($pelanggan as $data_pelanggan)
-                                <option value="{{ $data_pelanggan->id_pelanggan }}" {{ $data_pelanggan->id_pelanggan == $transaksi->id_pelanggan ? 'selected' : '' }}>
-                                    {{ $data_pelanggan->nama_pelanggan }}
+                            <option value="" disabled>-- Pilih Pelanggan --</option>
+                            @foreach ($pelanggan as $p)
+                                <option value="{{ $p->id_pelanggan }}" {{ $p->id_pelanggan == $transaksi->id_pelanggan ? 'selected' : '' }}>
+                                    {{ $p->nama_pelanggan }}
                                 </option>
                             @endforeach
                         </select>
                     </div>
                 </div>
 
-                {{-- ID Jenis --}}
                 <div class="mb-4 row">
                     <label for="id_jenis" class="col-sm-2 col-form-label">Jenis Barang</label>
                     <div class="col-sm-10">
                         <select name="id_jenis" id="id_jenis" class="form-select" required>
-                            <option disabled>-- Pilih Jenis Barang --</option>
-                            @foreach($jenis as $data_jenis)
-                                <option value="{{ $data_jenis->id_jenis }}" {{ $data_jenis->id_jenis == $transaksi->id_jenis ? 'selected' : '' }}>
-                                    {{ $data_jenis->nama_barang }}
+                            <option value="" disabled>-- Pilih Jenis Barang --</option>
+                            @foreach ($jenis as $j)
+                                <option value="{{ $j->id_jenis }}" {{ $j->id_jenis == $transaksi->id_jenis ? 'selected' : '' }}>
+                                    {{ $j->nama_barang }} (Rp {{ number_format($j->tarif, 0, ',', '.') }} / kg)
                                 </option>
                             @endforeach
                         </select>
                     </div>
                 </div>
 
-                {{-- Tarif --}}
                 <div class="mb-4 row">
-                    <label for="tarif" class="col-sm-2 col-form-label">Tarif</label>
+                    <label for="berat_barang" class="col-sm-2 col-form-label">Berat Barang (kg)</label>
                     <div class="col-sm-10">
-                        <input name="tarif" value="{{ $transaksi->tarif }}" class="form-control" type="number" placeholder="Masukkan Tarif" id="tarif" required>
+                        <input type="number" step="0.01" min="0.01" name="berat_barang" id="berat_barang" class="form-control" placeholder="Masukkan berat barang" value="{{ $transaksi->berat_barang }}" required>
                     </div>
                 </div>
 
-                <button type="submit" class="btn text-light" style="background-color: #fd7e14;">Simpan</button>
+                <div class="mb-4 row">
+                    <div class="col-sm-10 offset-sm-2">
+                        <button type="submit" class="btn text-light" style="background-color: #fd7e14;">
+                            <i class="fas fa-save me-2"></i>Simpan
+                        </button>
+                        <a href="/data_transaksi" class="btn btn-secondary ms-2">Batal</a>
+                    </div>
+                </div>
+
             </form>
         </div>
     </div>

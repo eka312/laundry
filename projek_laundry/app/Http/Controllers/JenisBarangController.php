@@ -15,7 +15,7 @@ class JenisBarangController extends Controller
     public function index()
     {
         $jenis = JenisBarang::all(); 
-         return view('jenis_barang.data_jenis', compact('jenis'));
+        return view('jenis_barang.data_jenis', compact('jenis'));
     }
 
     /**

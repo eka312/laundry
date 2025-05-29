@@ -32,7 +32,14 @@
                         <input name="no_telp_karyawan" class="form-control" type="text" placeholder="Masukkan Nomor Telp" id="no_telp_karyawan">
                     </div>
                 </div>
-                <button type="submit" class="btn text-light" style="background-color: #fd7e14;">Simpan</button>
+                <div class="mb-4 row">
+                    <div class="col-sm-10 offset-sm-2">
+                        <button type="submit" class="btn text-light" style="background-color: #fd7e14;">
+                            <i class="fas fa-save me-2"></i>Simpan
+                        </button>
+                        <a href="/data_transaksi" class="btn btn-secondary ms-2">Batal</a>
+                    </div>
+                </div>
             </form>
         </div>
     </div>

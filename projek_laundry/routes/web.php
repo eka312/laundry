@@ -7,7 +7,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\JenisBarangController;
-use App\Http\Controllers\TransaksiController; 
+use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\TemplateController;
+
 
 
 /*
@@ -78,7 +80,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::controller(JenisBarangController::class)->group(function () {
         // Routing halaman data jenis_barang
-        Route::get('/data_jenis', 'index');
+        Route::get('/data_jenis', [JenisBarangController::class, 'index'])->name('jenis_barang.data_jenis');
+
     
         // Routing tambah jenis_barang
         Route::get('/tambah_jenis', 'create');
@@ -94,21 +97,18 @@ Route::middleware(['auth'])->group(function () {
 
     
      Route::controller(TransaksiController::class)->group(function () {
-        // Routing halaman data transaksi
-        Route::get('/data_transaksi', 'index');
-    
-        // Routing tambah transaksi
-        Route::get('/tambah_transaksi', 'create');
-        Route::post('/tambah_transaksi', 'store')->name('transaksi.store');
+    Route::get('/data_transaksi', 'index')->name('transaksi.data_transaksi');
 
-    
-        // Routing ubah transaksi
-        Route::get('/ubah_transaksi/{id}', 'edit');
-        Route::post('/ubah_transaksi/{id}', 'update')->name('name_edit_transaksi');
-    
-        // Routing hapus transaksi
-        Route::get('/hapus_transaksi/{id}', 'destroy');
-    });
+    Route::get('/tambah_transaksi', 'create');
+    Route::post('/tambah_transaksi', [TransaksiController::class, 'store'])->name('transaksi.tambah_transaksi');
+
+    Route::get('/ubah_transaksi/{id}', 'edit');
+    Route::post('/ubah_transaksi/{id}', 'update')->name('name_edit_transaksi');
+
+    // Ganti route hapus jadi method DELETE dan beri nama route
+    Route::delete('/hapus_transaksi/{id}', 'destroy')->name('transaksi.destroy');
+});
+
 
 
 
