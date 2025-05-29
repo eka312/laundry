@@ -29,16 +29,13 @@ class TransaksiController extends Controller
     // Simpan data transaksi baru
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
+            'tanggal' => 'required|date',
             'id_karyawan' => 'required',
             'id_pelanggan' => 'required',
             'id_jenis' => 'required',
-            'tarif' => 'required|numeric'
+            'berat_barang' => 'required|numeric'
         ]);
-
-        Transaksi::create($request->all());
-        return redirect('/transaksi')->with('success', 'Data transaksi berhasil ditambahkan!');
-    }
 
         $jenisBarang = JenisBarang::findOrFail($validated['id_jenis']);
         $tarif = $jenisBarang->tarif;
@@ -55,6 +52,7 @@ class TransaksiController extends Controller
 
         return redirect()->route('transaksi.data_transaksi')->with('success', 'Data transaksi berhasil ditambahkan.');
     }
+
 
     // Tampilkan form edit transaksi
     public function edit($id_transaksi)

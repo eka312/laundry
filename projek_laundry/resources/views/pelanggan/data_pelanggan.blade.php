@@ -46,7 +46,7 @@
                                 <td>{{$item->no_telp}}</td>
                                 <td>{{$item->alamat}}</td>
                                 <td>
-                                    <a href="/ubah_pelanggan/{{$item->id_pelanggan}}" role="button" class="btn btn-sm" style="background-color: #F4A261; color: white; margin-bottom: 5px;">
+                                    <a href="/ubah_pelanggan/{{$item->id_pelanggan}}" role="button" class="btn btn-sm m-1" style="background-color: #F4A261; color: white; margin-bottom: 5px;">
                                      <i class="fas fa-edit me-2"></i>Ubah
                                     </a>
                                     <a href="/hapus_pelanggan/{{$item->id_pelanggan}}" onclick="return confirm('apakah anda yakin ingin menghapus data ini?');" role="button" class="btn btn-sm" style="background-color: #E63946; color: white;">

@@ -37,7 +37,7 @@
                         <button type="submit" class="btn text-light" style="background-color: #fd7e14;">
                             <i class="fas fa-save me-2"></i>Simpan
                         </button>
-                        <a href="/data_transaksi" class="btn btn-secondary ms-2">Batal</a>
+                        <a href="/data_karyawan" class="btn btn-secondary ms-2">Batal</a>
                     </div>
                 </div>
             </form>

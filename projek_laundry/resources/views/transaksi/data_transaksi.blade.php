@@ -66,7 +66,7 @@
                                 {{ 'Rp' . number_format($total, 0, ',', '.') }}
                             </td>
                             <td>
-                                <a href="{{ route('name_edit_transaksi', $item->id_transaksi) }}" class="btn btn-sm" style="background-color: #F4A261; color: white;">
+                                <a href="{{ route('name_edit_transaksi', $item->id_transaksi) }}" class="btn btn-sm m-1" style="background-color: #F4A261; color: white;">
                                     <i class="fas fa-edit me-2"></i>Ubah
                                 </a>
 
