@@ -33,10 +33,20 @@ Route::prefix('/')->group(function () {
 });
 
 
+Route::middleware(['web'])->group(function () {
 
+    Route::controller(AuthController::class)->group(function () {
+        // Routing halaman register
+        Route::get('/register', 'create')->name('register');
+        Route::post('/register', 'store')->name('register.submit');
+    });
+
+    // Route login, logout
+    Route::get('/login', [LoginController::class, 'index'])->name('login');
+    Route::post('/login', [LoginController::class, 'authenticate'])->name('login.submit');
 
     Route::middleware(['auth'])->group(function () {
-
+    
         Route::controller(KaryawanController::class)->group(function () {
             Route::get('/data_karyawan', 'index');
             Route::get('/tambah_karyawan', 'create');
@@ -64,38 +74,19 @@ Route::prefix('/')->group(function () {
             Route::get('/hapus_jenis/{id}', 'destroy');
         });
 
+        Route::post('/logout', function () {
+            Auth::logout();
+            request()->session()->invalidate();
+            request()->session()->regenerateToken();
+            return redirect('/');
+        })->name('logout');
+
     });
 
-
-
     
-    Route::controller(TransaksiController::class)->group(function () {
-        // Routing halaman data transaksi
-        Route::get('/data_transaksi', 'index');
-    
-        // Routing tambah transaksi
-        Route::get('/tambah_transaksi', 'create');
-        Route::post('/tambah_transaksi', 'store');
-    
-        // Routing ubah transaksi
-        Route::get('/ubah_transaksi/{id}', 'edit');
-        Route::post('/ubah_transaksi/{id}', 'update')->name('name_edit_transaksi');
-    
-        // Routing hapus transaksi
-        Route::get('/hapus_transaksi/{id}', 'destroy');
-    });
+});
 
-
-
-    Route::controller(AuthController::class)->group(function () {
-        // Routing halaman register
-        Route::get('/register', 'create')->name('register');
-        Route::post('/register', 'store')->name('register.submit');
-    });
-
-    // Route login, logout
-    Route::get('/login', [LoginController::class, 'index'])->name('login');
-    Route::post('/login', [LoginController::class, 'authenticate'])->name('login.submit');
+  
 
     Route::post('/logout', function () {
         Auth::logout();
