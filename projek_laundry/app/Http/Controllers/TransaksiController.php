@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Transaksi;
 use App\Models\Karyawan;
 use App\Models\Pelanggan;
@@ -24,20 +23,22 @@ class TransaksiController extends Controller
         $karyawan = Karyawan::all();
         $pelanggan = Pelanggan::all();
         $jenis = JenisBarang::all();
-
         return view('transaksi.tambah_transaksi', compact('karyawan', 'pelanggan', 'jenis'));
     }
 
     // Simpan data transaksi baru
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'tanggal' => 'required|date',
-            'id_karyawan' => 'required|exists:karyawans,id_karyawan',
-            'berat_barang' => 'required|numeric|min:0.01',
-            'id_pelanggan' => 'required|exists:pelanggans,id_pelanggan',
-            'id_jenis' => 'required|exists:jenis_barangs,id_jenis',
+        $request->validate([
+            'id_karyawan' => 'required',
+            'id_pelanggan' => 'required',
+            'id_jenis' => 'required',
+            'tarif' => 'required|numeric'
         ]);
+
+        Transaksi::create($request->all());
+        return redirect('/transaksi')->with('success', 'Data transaksi berhasil ditambahkan!');
+    }
 
         $jenisBarang = JenisBarang::findOrFail($validated['id_jenis']);
         $tarif = $jenisBarang->tarif;
@@ -58,12 +59,10 @@ class TransaksiController extends Controller
     // Tampilkan form edit transaksi
     public function edit($id_transaksi)
     {
-        // Pastikan ambil data 1 model bukan collection
         $transaksi = Transaksi::findOrFail($id_transaksi);
         $karyawan = Karyawan::all();
         $pelanggan = Pelanggan::all();
         $jenis = JenisBarang::all();
-
         return view('transaksi.ubah_transaksi', compact('transaksi', 'karyawan', 'pelanggan', 'jenis'));
     }
 

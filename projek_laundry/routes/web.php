@@ -97,6 +97,7 @@ Route::middleware(['auth'])->group(function () {
 
     
      Route::controller(TransaksiController::class)->group(function () {
+
     Route::get('/data_transaksi', 'index')->name('transaksi.data_transaksi');
 
     Route::get('/tambah_transaksi', 'create');

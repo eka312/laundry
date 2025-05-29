@@ -35,6 +35,7 @@ class Transaksi extends Model
     public function jenisBarang()
     {
         return $this->belongsTo(JenisBarang::class, 'id_jenis', 'id_jenis');
+
     }
 
     protected static function boot()
@@ -58,3 +59,4 @@ class Transaksi extends Model
         'tanggal' => 'date',
     ];
 }
+

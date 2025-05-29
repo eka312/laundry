@@ -1,5 +1,4 @@
 @extends('templating.master')
-
 @section('judul_halaman', 'Ubah Data Transaksi | SelSil Laundry')
 
 @section('konten')
@@ -18,24 +17,25 @@
             Ubah Data Transaksi
         </div>
         <div class="card-body text-capitalize">
+
             <form action="{{ route('name_edit_transaksi', $transaksi->id_transaksi) }}" method="POST">
                 @csrf
-
                 <div class="mb-4 row">
                     <label for="tanggal" class="col-sm-2 col-form-label">Tanggal</label>
                     <div class="col-sm-10">
                         <input type="date" name="tanggal" id="tanggal" class="form-control" value="{{ \Carbon\Carbon::parse($transaksi->tanggal)->format('Y-m-d') }}" required>
                     </div>
                 </div>
-
                 <div class="mb-4 row">
                     <label for="id_karyawan" class="col-sm-2 col-form-label">Nama Karyawan</label>
                     <div class="col-sm-10">
                         <select name="id_karyawan" id="id_karyawan" class="form-select" required>
+
                             <option value="" disabled>-- Pilih Karyawan --</option>
                             @foreach ($karyawan as $k)
                                 <option value="{{ $k->id_karyawan }}" {{ $k->id_karyawan == $transaksi->id_karyawan ? 'selected' : '' }}>
                                     {{ $k->nama_karyawan }}
+
                                 </option>
                             @endforeach
                         </select>
@@ -46,10 +46,12 @@
                     <label for="id_pelanggan" class="col-sm-2 col-form-label">Nama Pelanggan</label>
                     <div class="col-sm-10">
                         <select name="id_pelanggan" id="id_pelanggan" class="form-select" required>
+
                             <option value="" disabled>-- Pilih Pelanggan --</option>
                             @foreach ($pelanggan as $p)
                                 <option value="{{ $p->id_pelanggan }}" {{ $p->id_pelanggan == $transaksi->id_pelanggan ? 'selected' : '' }}>
                                     {{ $p->nama_pelanggan }}
+
                                 </option>
                             @endforeach
                         </select>
@@ -60,16 +62,17 @@
                     <label for="id_jenis" class="col-sm-2 col-form-label">Jenis Barang</label>
                     <div class="col-sm-10">
                         <select name="id_jenis" id="id_jenis" class="form-select" required>
+
                             <option value="" disabled>-- Pilih Jenis Barang --</option>
                             @foreach ($jenis as $j)
                                 <option value="{{ $j->id_jenis }}" {{ $j->id_jenis == $transaksi->id_jenis ? 'selected' : '' }}>
                                     {{ $j->nama_barang }} (Rp {{ number_format($j->tarif, 0, ',', '.') }} / kg)
+
                                 </option>
                             @endforeach
                         </select>
                     </div>
                 </div>
-
                 <div class="mb-4 row">
                     <label for="berat_barang" class="col-sm-2 col-form-label">Berat Barang (kg)</label>
                     <div class="col-sm-10">

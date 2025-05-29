@@ -1,5 +1,6 @@
 @extends('templating.master')
 
+
 @section('judul_halaman', 'Data Transaksi | SelSil Laundry')
 
 @section('konten')
@@ -9,10 +10,10 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item active">
                 <a href="{{ url('/data_transaksi') }}" style="color: #F4A261;">Transaksi</a>
+
             </li>
         </ol>
-    </nav>   
-    
+    </nav>  
     <div class="card mb-4 text-capitalize" style="border-color: #0D1B2A;">
         <div class="card-header" style="background-color: #0D1B2A; color: white;">
             <div class="d-flex justify-content-between align-items-center">
@@ -21,13 +22,16 @@
                     Daftar Data Transaksi
                 </div>
                 <div>
+
                     <a class="btn btn-sm" href="{{ url('/tambah_transaksi') }}" role="button" style="background-color: #F4A261; color: white;">
                         <i class="fas fa-plus me-2"></i>Tambah
+
                     </a>
                 </div>
             </div>
         </div>
         <div class="card-body">
+
             <table id="datatablesSimple" class="table table-bordered table-striped" style="border: 1px solid #0D1B2A;">
                 <thead style="background-color: #0D1B2A; color: white;">
                     <tr>
@@ -38,10 +42,12 @@
                         <th>Jenis Barang</th>
                         <th>Berat (kg)</th>
                         <th>Total (Rp)</th>
+
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
+
                     @forelse ($transaksis as $item)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
@@ -79,6 +85,7 @@
                         </tr>
                     @endforelse
                 </tbody>
+
             </table>
         </div>
     </div>

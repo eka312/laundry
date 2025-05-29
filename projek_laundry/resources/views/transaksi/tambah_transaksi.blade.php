@@ -1,5 +1,4 @@
 @extends('templating.master')
-
 @section('judul_halaman', 'Tambah Transaksi | SelSil Laundry')
 
 @section('konten')
@@ -35,10 +34,13 @@
                             <option value="" disabled selected>-- Pilih Karyawan --</option>
                             @foreach ($karyawan as $k)
                                 <option value="{{ $k->id_karyawan }}">{{ $k->nama_karyawan }}</option>
+
+
                             @endforeach
                         </select>
                     </div>
                 </div>
+
 
                 <div class="mb-4 row">
                     <label for="id_pelanggan" class="col-sm-2 col-form-label">Nama Pelanggan</label>
@@ -47,6 +49,7 @@
                             <option value="" disabled selected>-- Pilih Pelanggan --</option>
                             @foreach ($pelanggan as $p)
                                 <option value="{{ $p->id_pelanggan }}">{{ $p->nama_pelanggan }}</option>
+
                             @endforeach
                         </select>
                     </div>
@@ -59,10 +62,12 @@
                             <option value="" disabled selected>-- Pilih Jenis Barang --</option>
                             @foreach ($jenis as $j)
                                 <option value="{{ $j->id_jenis }}">{{ $j->nama_barang }} (Rp {{ number_format($j->tarif, 0, ',', '.') }} / kg)</option>
+
                             @endforeach
                         </select>
                     </div>
                 </div>
+
 
                 <div class="mb-4 row">
                     <label for="berat_barang" class="col-sm-2 col-form-label">Berat Barang (kg)</label>
@@ -79,7 +84,6 @@
                         <a href="/data_transaksi" class="btn btn-secondary ms-2">Batal</a>
                     </div>
                 </div>
-
             </form>
         </div>
     </div>
