@@ -31,7 +31,6 @@
             </div>
         </div>
         <div class="card-body">
-
             <table id="datatablesSimple" class="table table-bordered table-striped" style="border: 1px solid #0D1B2A;">
                 <thead style="background-color: #0D1B2A; color: white;">
                     <tr>
@@ -48,7 +47,7 @@
                 </thead>
                 <tbody>
 
-                    @forelse ($transaksis as $item)
+                    @forelse ($transaksi as $item)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ \Carbon\Carbon::parse($item->tanggal)->format('d-m-Y') }}</td>
@@ -66,6 +65,10 @@
                                 {{ 'Rp' . number_format($total, 0, ',', '.') }}
                             </td>
                             <td>
+                                <a href="{{ route('transaksi.detail', $item->id_transaksi) }}" class="btn btn-sm m-1" style="background-color: #2A9D8F; color: white;">
+                                    <i class="fas fa-eye me-2"></i>Detail
+                                </a>
+
                                 <a href="{{ route('name_edit_transaksi', $item->id_transaksi) }}" class="btn btn-sm m-1" style="background-color: #F4A261; color: white;">
                                     <i class="fas fa-edit me-2"></i>Ubah
                                 </a>
@@ -78,6 +81,7 @@
                                     </button>
                                 </form>
                             </td>
+
                         </tr>
                         @empty
                         <tr>

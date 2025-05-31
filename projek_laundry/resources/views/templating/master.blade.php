@@ -12,6 +12,7 @@
         <link href="{{asset('template-admin/dist/css/styles.css')}}" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" integrity="sha512-dPXYcDub/aeb08c63jRq/k6GaKccl256JQy/AnOq7CAnEZ9FzSL9wSbcZkMp4R26vBsMLFYH4kQ67/bbV8XaCQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        
     </head>
     <body class="sb-nav-fixed">
         <div id="layoutSidenav">
@@ -37,22 +38,23 @@
                     <hr class="border border-white">
                     <div class="sb-sidenav-menu text-capitalize">
                         <div class="nav">
-                            <a class="nav-link" href="/data_karyawan">
-                                <div class="sb-nav-link-icon"><i class="fa-regular fa-rectangle-list fa-lg"></i></i></div>
+                            <a class="nav-link {{ request()->is('data_karyawan') ? 'active' : '' }}" href="/data_karyawan">
+                                <div class="sb-nav-link-icon"><i class="fa-regular fa-rectangle-list fa-lg"></i></div>
                                 Data Karyawan
                             </a>
-                            <a class="nav-link" href="/data_jenis">
+                            <a class="nav-link {{ request()->is('data_jenis') ? 'active' : '' }}" href="/data_jenis">
                                 <div class="sb-nav-link-icon"><i class="fa-regular fa-rectangle-list fa-lg"></i></i></div>
                                 Jenis Barang
                             </a>
-                            <a class="nav-link" href="/data_pelanggan">
+                            <a class="nav-link {{ request()->is('data_pelanggan') ? 'active' : '' }}" href="/data_pelanggan">
                                 <div class="sb-nav-link-icon"><i class="fa-regular fa-rectangle-list fa-lg"></i></i></div>
                                 Data Pelanggan
                             </a>
-                            <a class="nav-link" href="/data_transaksi">
+                            <a class="nav-link {{ request()->is('data_transaksi') ? 'active' : '' }}" href="/data_transaksi">
                                 <div class="sb-nav-link-icon"><i class="fa-regular fa-rectangle-list fa-lg"></i></i></div>
                                 Data Transaksi
                             </a>
+                            
                             <a class="nav-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                 <div class="sb-nav-link-icon"><i class="bi bi-box-arrow-right fs-5"></i></div>
                                 Keluar

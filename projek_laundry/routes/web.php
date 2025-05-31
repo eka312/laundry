@@ -122,7 +122,9 @@ Route::controller(TemplateController::class)->group(function () {
         
             Route::get('/tambah_transaksi', 'create');
             Route::post('/tambah_transaksi', 'store')->name('transaksi.tambah_transaksi');
-        
+            
+            Route::get('/detail_transaksi/{id}', 'show')->name('transaksi.detail');
+
             Route::get('/ubah_transaksi/{id}', 'edit');
             Route::post('/ubah_transaksi/{id}', 'update')->name('name_edit_transaksi');
         

@@ -17,6 +17,9 @@ class Transaksi extends Model
         'id_pelanggan',
         'id_jenis',
         'total',
+        'metode_pembayaran',
+        'jumlah_bayar',
+        'kembalian',
     ];
 
     // Relasi ke Karyawan

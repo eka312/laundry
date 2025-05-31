@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Str;
 use App\Models\Transaksi;
 use App\Models\Karyawan;
 use App\Models\Pelanggan;
@@ -13,8 +14,8 @@ class TransaksiController extends Controller
     public function index()
     {
         // Pastikan relasi yang dipanggil benar (sesuaikan nama relasi di model)
-        $transaksis = Transaksi::with(['karyawan', 'pelanggan', 'jenisBarang'])->get();
-        return view('transaksi.data_transaksi', compact('transaksis'));
+        $transaksi = Transaksi::with(['karyawan', 'pelanggan', 'jenisBarang'])->get();
+        return view('transaksi.data_transaksi', compact('transaksi'));
     }
 
     // Tampilkan form tambah transaksi
@@ -31,16 +32,25 @@ class TransaksiController extends Controller
     {
         $validated = $request->validate([
             'tanggal' => 'required|date',
-            'id_karyawan' => 'required',
-            'id_pelanggan' => 'required',
-            'id_jenis' => 'required',
-            'berat_barang' => 'required|numeric'
+            'id_karyawan' => 'required|exists:karyawans,id_karyawan',
+            'id_pelanggan' => 'required|exists:pelanggans,id_pelanggan',
+            'id_jenis' => 'required|exists:jenis_barangs,id_jenis',
+            'berat_barang' => 'required|numeric|min:0.01',
+            'metode_pembayaran' => 'required|in:Tunai,QRIS',
+            'jumlah_bayar' => 'required|integer|min:0',
+
+            
         ]);
 
         $jenisBarang = JenisBarang::findOrFail($validated['id_jenis']);
         $tarif = $jenisBarang->tarif;
-        $total = $validated['berat_barang'] * $tarif;
+        $total = (int)($validated['berat_barang'] * $tarif);
+        $kembalian = $validated['jumlah_bayar'] - $total;
 
+        if ($kembalian < 0) {
+            return back()->withErrors(['jumlah_bayar' => 'Jumlah bayar kurang dari total harga!'])->withInput();
+        }
+        
         Transaksi::create([
             'tanggal' => $validated['tanggal'],
             'id_karyawan' => $validated['id_karyawan'],
@@ -48,9 +58,19 @@ class TransaksiController extends Controller
             'id_pelanggan' => $validated['id_pelanggan'],
             'id_jenis' => $validated['id_jenis'],
             'total' => $total,
+            'metode_pembayaran' => $validated['metode_pembayaran'],
+            'jumlah_bayar' => $validated['jumlah_bayar'],
+            'kembalian' => $kembalian,
         ]);
 
         return redirect()->route('transaksi.data_transaksi')->with('success', 'Data transaksi berhasil ditambahkan.');
+    }
+
+    // Tampilkan detail transaksi
+    public function show($id_transaksi)
+    {
+        $transaksi = Transaksi::with(['karyawan', 'pelanggan', 'jenisBarang'])->findOrFail($id_transaksi);
+        return view('transaksi.detail_transaksi', compact('transaksi'));
     }
 
 
@@ -73,13 +93,20 @@ class TransaksiController extends Controller
             'berat_barang' => 'required|numeric|min:0.01',
             'id_pelanggan' => 'required|exists:pelanggans,id_pelanggan',
             'id_jenis' => 'required|exists:jenis_barangs,id_jenis',
+            'jumlah_bayar' => 'required|integer|min:0',
+            'metode_pembayaran' => 'required|in:Tunai,QRIS',
         ]);
 
         $transaksi = Transaksi::findOrFail($id_transaksi);
 
         $jenisBarang = JenisBarang::findOrFail($validated['id_jenis']);
         $tarif = $jenisBarang->tarif;
-        $total = $validated['berat_barang'] * $tarif;
+        $total = (int)$validated['berat_barang'] * $tarif;
+        $kembalian = $validated['jumlah_bayar'] - $total;
+
+        if ($kembalian < 0) {
+            return back()->withErrors(['jumlah_bayar' => 'Jumlah bayar kurang dari total harga!'])->withInput();
+        }
 
         $transaksi->update([
             'tanggal' => $validated['tanggal'],
@@ -88,6 +115,9 @@ class TransaksiController extends Controller
             'id_pelanggan' => $validated['id_pelanggan'],
             'id_jenis' => $validated['id_jenis'],
             'total' => $total,
+            'jumlah_bayar' => $validated['jumlah_bayar'],
+            'metode_pembayaran' => $validated['metode_pembayaran'],
+            'kembalian' => $kembalian,
         ]);
 
         return redirect()->route('transaksi.data_transaksi')->with('success', 'Data transaksi berhasil diubah.');
