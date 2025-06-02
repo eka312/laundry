@@ -33,7 +33,7 @@ class AuthController extends Controller
 
         if (Auth::attempt(['email' => $user->email, 'password' => $request->password])) {
             $request->session()->regenerate();
-            return redirect('/data_karyawan')->with('success', 'Registrasi berhasil!');
+            return redirect('/login')->with('success', 'Registrasi berhasil!');
 
         }
         

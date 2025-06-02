@@ -75,6 +75,7 @@
                         <input type="number" step="0.01" min="0.01" name="berat_barang" id="berat_barang" class="form-control" placeholder="Masukkan berat barang" required>
                     </div>
                 </div>
+                
 
                 <div class="mb-4 row">
                     <div class="col-sm-10 offset-sm-2">
