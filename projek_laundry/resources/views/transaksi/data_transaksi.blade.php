@@ -40,6 +40,7 @@
                         <th>Nama Pelanggan</th>
                         <th>Jenis Barang</th>
                         <th>Berat (kg)</th>
+                        
                         <th>Total (Rp)</th>
 
                         <th>Aksi</th>

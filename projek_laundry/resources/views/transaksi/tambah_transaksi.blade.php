@@ -34,8 +34,6 @@
                             <option value="" disabled selected>-- Pilih Karyawan --</option>
                             @foreach ($karyawan as $k)
                                 <option value="{{ $k->id_karyawan }}">{{ $k->nama_karyawan }}</option>
-
-
                             @endforeach
                         </select>
                     </div>
@@ -75,8 +73,26 @@
                         <input type="number" step="0.01" min="0.01" name="berat_barang" id="berat_barang" class="form-control" placeholder="Masukkan berat barang" required>
                     </div>
                 </div>
-                
 
+              <div class="mb-4 row">
+                    <label for="status_cucian" class="col-sm-2 col-form-label">Status Cucian</label>
+                    <div class="col-sm-10">
+                        <select name="status_cucian" id="status_cucian" class="form-select" required>
+                            <option value="" disabled selected>-- Pilih Status --</option>
+                            <option value="Dalam Proses">Dalam Proses</option>
+                            <option value="Selesai">Selesai</option>
+                            <option value="Sudah Diambil">Sudah Diambil</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="mb-4 row">
+                    <label for="jumlah_bayar" class="col-sm-2 col-form-label">Jumlah Bayar</label>
+                    <div class="col-sm-10">
+                        <input type="number" name="jumlah_bayar" id="jumlah_bayar" class="form-control" placeholder="Masukkan total bayar" required>
+                    </div>                
+                </div>
                 <div class="mb-4 row">
                     <div class="col-sm-10 offset-sm-2">
                         <button type="submit" class="btn text-light" style="background-color: #fd7e14;">
