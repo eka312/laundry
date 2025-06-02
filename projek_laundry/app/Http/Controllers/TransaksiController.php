@@ -45,7 +45,7 @@ class TransaksiController extends Controller
         $total = $validated['berat_barang'] * $tarif;
 
         Transaksi::create([
-            'tanggal' => $validated['tanggal'],
+            'tanggal yo' => $validated['tanggal'],
             'id_karyawan' => $validated['id_karyawan'],
             'berat_barang' => $validated['berat_barang'],
             'id_pelanggan' => $validated['id_pelanggan'],
