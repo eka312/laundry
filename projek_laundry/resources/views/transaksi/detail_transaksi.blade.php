@@ -42,7 +42,7 @@
                     Detail Pembayaran
                 </div>
                 <div class="card-body">
-                    <p><strong>Metode Pembayaran:</strong> {{ $transaksi->metode_pembayaran }}</p>
+                    <p><strong>Status Cucian:</strong> {{ $transaksi->status_cucian }}</p>
                     <p><strong>Jumlah Bayar:</strong> {{ 'Rp' . number_format($transaksi->jumlah_bayar, 0, ',', '.') }}</p>
                     <p><strong>Kembalian:</strong> {{ 'Rp' . number_format($transaksi->kembalian, 0, ',', '.') }}</p>
                 </div>

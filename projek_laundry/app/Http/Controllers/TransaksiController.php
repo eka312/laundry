@@ -36,7 +36,7 @@ class TransaksiController extends Controller
             'id_pelanggan' => 'required|exists:pelanggans,id_pelanggan',
             'id_jenis' => 'required|exists:jenis_barangs,id_jenis',
             'berat_barang' => 'required|numeric|min:0.01',
-            'metode_pembayaran' => 'required|in:Tunai,QRIS',
+            'status_cucian' => 'required|in:Dalam Proses,Sudah Selesai,Sudah Diambil',
             'jumlah_bayar' => 'required|integer|min:0',
 
             
@@ -58,7 +58,7 @@ class TransaksiController extends Controller
             'id_pelanggan' => $validated['id_pelanggan'],
             'id_jenis' => $validated['id_jenis'],
             'total' => $total,
-            'metode_pembayaran' => $validated['metode_pembayaran'],
+            'status_cucian' => $validated['status_cucian'],
             'jumlah_bayar' => $validated['jumlah_bayar'],
             'kembalian' => $kembalian,
         ]);
@@ -94,7 +94,7 @@ class TransaksiController extends Controller
             'id_pelanggan' => 'required|exists:pelanggans,id_pelanggan',
             'id_jenis' => 'required|exists:jenis_barangs,id_jenis',
             'jumlah_bayar' => 'required|integer|min:0',
-            'metode_pembayaran' => 'required|in:Tunai,QRIS',
+            'status_cucian' => 'required|in:Dalam Proses,Sudah Selesai,Sudah Diambil',
         ]);
 
         $transaksi = Transaksi::findOrFail($id_transaksi);
@@ -116,7 +116,7 @@ class TransaksiController extends Controller
             'id_jenis' => $validated['id_jenis'],
             'total' => $total,
             'jumlah_bayar' => $validated['jumlah_bayar'],
-            'metode_pembayaran' => $validated['metode_pembayaran'],
+            'status_cucian' => $validated['status_cucian'],
             'kembalian' => $kembalian,
         ]);
 

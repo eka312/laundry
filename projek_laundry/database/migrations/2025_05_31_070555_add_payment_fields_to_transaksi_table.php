@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('transaksis', function (Blueprint $table) {
             $table->integer('jumlah_bayar')->nullable();
-            $table->enum('metode_pembayaran', ['Tunai', 'QRIS'])->default('Tunai');
+            $table->enum('status_cucian', ['Dalam Proses', 'Selesai', 'Sudah Diambi'])->default('Dalam Proses');
             $table->integer('kembalian')->nullable();
         });
     }
