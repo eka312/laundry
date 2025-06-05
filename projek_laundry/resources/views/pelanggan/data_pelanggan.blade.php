@@ -29,7 +29,7 @@
         </div>
             <div class="card-body">
                 <table id="datatablesSimple" style="border: 1px solid #0D1B2A;"> {{-- border biru dongker --}}
-                    <thead style="background-color: #0D1B2A; color: white;"> {{-- header tabel biru dongker --}}
+                    <thead > {{-- header tabel biru dongker --}}
                         <tr>
                             <th>No</th>
                             <th>nama pelanggan</th>

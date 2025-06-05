@@ -44,7 +44,7 @@ class TransaksiController extends Controller
 
         $jenisBarang = JenisBarang::findOrFail($validated['id_jenis']);
         $tarif = $jenisBarang->tarif;
-        $total = (int)($validated['berat_barang'] * $tarif);
+        $total = ($validated['berat_barang'] * $tarif);
         $kembalian = $validated['jumlah_bayar'] - $total;
 
         if ($kembalian < 0) {
@@ -101,7 +101,7 @@ class TransaksiController extends Controller
 
         $jenisBarang = JenisBarang::findOrFail($validated['id_jenis']);
         $tarif = $jenisBarang->tarif;
-        $total = (int)$validated['berat_barang'] * $tarif;
+        $total = $validated['berat_barang'] * $tarif;
         $kembalian = $validated['jumlah_bayar'] - $total;
 
         if ($kembalian < 0) {

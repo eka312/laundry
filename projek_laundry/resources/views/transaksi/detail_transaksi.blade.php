@@ -59,19 +59,17 @@
                         $total = 0;
                         $tarif = $transaksi->jenisBarang->tarif ?? 0;
                         $berat = $transaksi->berat_barang ?? 0;
-                        $subtotal = $tarif * $berat;
-                        $total += $subtotal;
                     @endphp
                     <tr>
                         <td>1</td>
                         <td>{{ $transaksi->jenisBarang->nama_barang ?? '-' }}</td>
                         <td>{{ number_format($berat, 2, ',', '.') }}</td>
                         <td>{{ 'Rp' . number_format($tarif, 0, ',', '.') }}</td>
-                        <td>{{ 'Rp' . number_format($subtotal, 0, ',', '.') }}</td>
+                        <td>{{ 'Rp' . number_format($transaksi->total, 0, ',', '.') }}</td>
                     </tr>
                     <tr>
                         <td colspan="4" class="text-end"><strong>Total</strong></td>
-                        <td><strong>{{ 'Rp' . number_format($total, 0, ',', '.') }}</strong></td>
+                        <td><strong>{{ 'Rp' . number_format($transaksi->total, 0, ',', '.') }}</strong></td>
                     </tr>
                 </tbody>
             </table>
