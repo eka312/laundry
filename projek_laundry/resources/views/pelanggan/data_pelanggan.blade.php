@@ -13,7 +13,7 @@
         </ol>
     </nav>   
     
-    <div class="card mb-4 text-capitalize" style="border-color:rgb(36, 60, 87);"> {{-- biru dongker border --}}
+    <div class="card mb-4 text-capitalize" style="border-color:rgb(36, 60, 87);  width: 100%;"> {{-- biru dongker border --}}
         <div class="card-header" style="background-color: #0D1B2A; color: white;"> {{-- header biru dongker --}}
             <div class="d-flex">
                 <div class="flex-grow-1 d-flex align-items-center">
@@ -28,7 +28,7 @@
             </div>
         </div>
             <div class="card-body">
-                <table id="datatablesSimple" style="border: 1px solid #0D1B2A;"> {{-- border biru dongker --}}
+                <table id="datatablesSimple" style="border: 1px solid #0D1B2A; width: 100%;"> {{-- border biru dongker --}}
                     <thead style="background-color: #0D1B2A; color: white;"> {{-- header tabel biru dongker --}}
                         <tr>
                             <th>No</th>
@@ -60,5 +60,17 @@
             </div>
         </div>
     </div>
+
+    <style>
+    #datatablesSimple thead {
+        background-color: #0D1B2A !important;
+        color: white !important;
+    }
+
+    #datatablesSimple thead th {
+        background-color: #0D1B2A !important;
+        color: white !important;
+    }
+</style>
     
 @endsection

@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="card-body">
-            <table id="datatablesSimple" style="border: 1px solid #0D1B2A;"> {{-- border biru dongker --}}
+            <table id="datatablesSimple" style="border: 1px solid #0D1B2A; width: 100%;"> {{-- border biru dongker --}}
                 <thead style="background-color: #0D1B2A; color: white;"> {{-- header tabel biru dongker --}}
                     <tr>
                         <th>No</th>
@@ -58,4 +58,15 @@
         </div>
     </div>
 </div>
+<style>
+    #datatablesSimple thead {
+        background-color: #0D1B2A !important;
+        color: white !important;
+    }
+
+    #datatablesSimple thead th {
+        background-color: #0D1B2A !important;
+        color: white !important;
+    }
+</style>
 @endsection

@@ -1,6 +1,5 @@
 @extends('templating.master')
 
-
 @section('judul_halaman', 'Data Transaksi | SelSil Laundry')
 
 @section('konten')
@@ -10,7 +9,6 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item active">
                 <a href="{{ url('/data_transaksi') }}" style="color: #F4A261;">Transaksi</a>
-
             </li>
         </ol>
     </nav>  
@@ -22,17 +20,15 @@
                     Daftar Data Transaksi
                 </div>
                 <div>
-
                     <a class="btn btn-sm" href="{{ url('/tambah_transaksi') }}" role="button" style="background-color: #F4A261; color: white;">
                         <i class="fas fa-plus me-2"></i>Tambah
-
                     </a>
                 </div>
             </div>
         </div>
         <div class="card-body">
             <table id="datatablesSimple" class="table table-bordered table-striped" style="border: 1px solid #0D1B2A;">
-                <thead style="background-color: #0D1B2A; color: white;">
+                <thead>
                     <tr>
                         <th>No</th>
                         <th>Tanggal</th>
@@ -40,14 +36,11 @@
                         <th>Nama Pelanggan</th>
                         <th>Jenis Barang</th>
                         <th>Berat (kg)</th>
-                        
                         <th>Total (Rp)</th>
-
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-
                     @forelse ($transaksi as $item)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
@@ -82,17 +75,28 @@
                                     </button>
                                 </form>
                             </td>
-
                         </tr>
-                        @empty
+                    @empty
                         <tr>
                             <td colspan="9" class="text-center">Data transaksi belum tersedia.</td>
                         </tr>
                     @endforelse
                 </tbody>
-
             </table>
         </div>
     </div>
 </div>
+
+{{-- Tambahkan style untuk mencegah DataTables menimpa warna header --}}
+<style>
+    #datatablesSimple thead {
+        background-color: #0D1B2A !important;
+        color: white !important;
+    }
+
+    #datatablesSimple thead th {
+        background-color: #0D1B2A !important;
+        color: white !important;
+    }
+</style>
 @endsection
