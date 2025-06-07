@@ -2,26 +2,64 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Transaksi extends Model
 {
-    use HasFactory;
+    protected $table = 'transaksis'; // nama tabel sesuai migrasi
 
-    protected $primaryKey = 'id_transaksi';
-    protected $fillable = ['id_karyawan', 'id_pelanggan', 'id_jenis', 'tarif'];
+    protected $primaryKey = 'id_transaksi'; // primary key sesuai migrasi
 
-    public function karyawan() {
-        return $this->belongsTo(Karyawan::class, 'id_karyawan');
+    protected $fillable = [
+        'tanggal',
+        'id_karyawan',
+        'berat_barang',
+        'id_pelanggan',
+        'id_jenis',
+        'total',
+        'status_cucian',
+        'jumlah_bayar',
+        'kembalian',
+    ];
+
+    // Relasi ke Karyawan
+    public function karyawan()
+    {
+        return $this->belongsTo(Karyawan::class, 'id_karyawan', 'id_karyawan');
     }
 
-    public function pelanggan() {
-        return $this->belongsTo(Pelanggan::class, 'id_pelanggan');
+    // Relasi ke Pelanggan
+    public function pelanggan()
+    {
+        return $this->belongsTo(Pelanggan::class, 'id_pelanggan', 'id_pelanggan');
     }
 
-    public function jenis() {
-        return $this->belongsTo(JenisBarang::class, 'id_jenis');
+    // Relasi ke JenisBarang
+    public function jenisBarang()
+    {
+        return $this->belongsTo(JenisBarang::class, 'id_jenis', 'id_jenis');
+
     }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($transaksi) {
+            if ($transaksi->jenisBarang) {
+                $transaksi->total = $transaksi->berat_barang * $transaksi->jenisBarang->tarif;
+            }
+        });
+
+        static::updating(function ($transaksi) {
+            if ($transaksi->jenisBarang) {
+                $transaksi->total = $transaksi->berat_barang * $transaksi->jenisBarang->tarif;
+            }
+        });
+    }
+
+    protected $casts = [
+        'tanggal' => 'date',
+    ];
 }
 

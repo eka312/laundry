@@ -7,8 +7,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\JenisBarangController;
-use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\TransaksiController; 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\TemplateController;
 
 
 /*
@@ -29,10 +30,17 @@ Route::prefix('/')->group(function () {
     Route::view('layanan', 'landing_page.layanan');
     Route::view('tentang_kami', 'landing_page.tentang_kami');
     Route::view('kontak', 'landing_page.kontak');
-    Route::view('template_login', 'templating.template_login');
-    Route::view('master', 'templating.master');
 });
 
+Route::controller(TemplateController::class)->group(function () {
+    // Routing halaman templating_login (Master Template untuk login/register)
+    Route::get('/template_login', 'template_login');
+    // Routing halaman master template
+    Route::get('/master', 'master');
+    // Routing halaman landingPage
+   
+    
+});
 
 
 
@@ -59,26 +67,41 @@ Route::prefix('/')->group(function () {
     Route::middleware(['auth'])->group(function () {
     
         Route::controller(KaryawanController::class)->group(function () {
+            // Routing halaman data karyawan
             Route::get('/data_karyawan', 'index');
+        
+            // Routing tambah karyawan
             Route::get('/tambah_karyawan', 'create');
             Route::post('/tambah_karyawan', 'store');
+        
+            // Routing ubah karyawan
             Route::get('/ubah_karyawan/{id}', 'edit');
             Route::post('/ubah_karyawan/{id}', 'update')->name('name_edit_karyawan');
+        
+            // Routing hapus karyawan
             Route::get('/hapus_karyawan/{id}', 'destroy');
         });
 
         Route::controller(PelangganController::class)->group(function () {
+            // Routing halaman data pelanggan
             Route::get('/data_pelanggan', 'index');
+        
+            // Routing tambah pelanggan
             Route::get('/tambah_pelanggan', 'create');
             Route::post('/tambah_pelanggan', 'store');
+        
+            // Routing ubah pelanggan
             Route::get('/ubah_pelanggan/{id}', 'edit');
             Route::post('/ubah_pelanggan/{id}', 'update')->name('name_edit_pelanggan');
+        
+            // Routing hapus pelanggan
             Route::get('/hapus_pelanggan/{id}', 'destroy');
         });
 
         Route::controller(JenisBarangController::class)->group(function () {
             // Routing halaman data jenis_barang
-            Route::get('/data_jenis', 'index');
+            Route::get('/data_jenis', 'index')->name('jenis_barang.data_jenis');
+    
         
             // Routing tambah jenis_barang
             Route::get('/tambah_jenis', 'create');
@@ -94,28 +117,20 @@ Route::prefix('/')->group(function () {
 
     
         Route::controller(TransaksiController::class)->group(function () {
-            // Routing halaman data transaksi
-            Route::get('/data_transaksi', 'index');
+
+            Route::get('/data_transaksi', 'index')->name('transaksi.data_transaksi');
         
-            // Routing tambah transaksi
             Route::get('/tambah_transaksi', 'create');
-            Route::post('/tambah_transaksi', 'store');
-        
-            // Routing ubah transaksi
+            Route::post('/tambah_transaksi', 'store')->name('transaksi.tambah_transaksi');
+            
+            Route::get('/detail_transaksi/{id}', 'show')->name('transaksi.detail');
+
             Route::get('/ubah_transaksi/{id}', 'edit');
             Route::post('/ubah_transaksi/{id}', 'update')->name('name_edit_transaksi');
         
-            // Routing hapus transaksi
-            Route::get('/hapus_transaksi/{id}', 'destroy');
+            // Ganti route hapus jadi method DELETE dan beri nama route
+            Route::delete('/hapus_transaksi/{id}', 'destroy')->name('transaksi.destroy');
         });
 
     });
-
-
-
-
-
-
-
-
 

@@ -5,10 +5,27 @@
 @section('konten')
 <div class="container text-capitalize" style="background-color: #fef7f1; padding: 2rem; border-radius: 10px;">
     <h1 class="mt-4 text-dark">ubah data karyawan</h1>
+    @php
+        $path = request()->path(); // contoh: 'data_karyawan', 'tambah_karyawan', 'ubah_karyawan/5'
+    @endphp
+
     <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/data_karyawan" class="text-primary">data karyawan</a></li>
-            <li class="breadcrumb-item active text-dark" aria-current="page">ubah data karyawan</li>
+            @if (Str::contains($path, 'karyawan'))
+                @if ($path === 'data_karyawan')
+                    <li class="breadcrumb-item active" aria-current="page">Data Karyawan</li>
+                @else
+                    <li class="breadcrumb-item">
+                        <a href="{{ url('/data_karyawan') }}" style="color: #F4A261;">Data Karyawan</a>
+                    </li>
+                @endif
+
+                @if ($path === 'tambah_karyawan')
+                    <li class="breadcrumb-item active" aria-current="page">Tambah Karyawan</li>
+                @elseif (Str::startsWith($path, 'ubah_karyawan'))
+                    <li class="breadcrumb-item active" aria-current="page">Ubah Karyawan</li>
+                @endif
+            @endif
         </ol>
     </nav>
 
@@ -32,7 +49,14 @@
                         <input name="no_telp_karyawan" value="{{$karyawan->no_telp_karyawan}}" class="form-control" type="text" placeholder="Masukkan Nomor Telepon" id="no_telp_karyawan">
                     </div>
                 </div>
-                <button type="submit" class="btn text-light" style="background-color: #fd7e14;">Simpan</button>
+                <div class="mb-4 row">
+                    <div class="col-sm-10 offset-sm-2">
+                        <button type="submit" class="btn text-light" style="background-color: #fd7e14;">
+                            <i class="fas fa-save me-2"></i>Simpan
+                        </button>
+                        <a href="/data_karyawan" class="btn btn-secondary ms-2">Batal</a>
+                    </div>
+                </div>
             </form>
         </div>
     </div>

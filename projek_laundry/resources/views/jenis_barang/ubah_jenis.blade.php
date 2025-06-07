@@ -32,7 +32,14 @@
                         <input name="tarif" value="{{$jenis->tarif}}" class="form-control" type="text" placeholder="tarif" id="tarif">
                     </div>
                 </div>
-                <button type="submit" class="btn text-light" style="background-color: #fd7e14;">Simpan</button>
+                <div class="mb-4 row">
+                    <div class="col-sm-10 offset-sm-2">
+                        <button type="submit" class="btn text-light" style="background-color: #fd7e14;">
+                            <i class="fas fa-save me-2"></i>Simpan
+                        </button>
+                        <a href="/data_jenis" class="btn btn-secondary ms-2">Batal</a>
+                    </div>
+                </div>
             </form>
         </div>
     </div>

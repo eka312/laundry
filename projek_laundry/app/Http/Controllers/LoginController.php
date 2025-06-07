@@ -29,13 +29,7 @@ class LoginController extends Controller
             return redirect()->intended('/data_karyawan');
         }
 
-        // if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-        //     dd('login berhasil');
-        //     return redirect()->intended('data_karyawan');
-        // } else {
-        //     dd('login gagal');
-        //     return back()->with('error', 'Email atau password salah');
-        // }
+       
 
         // gagal login
         return back()->withErrors([
